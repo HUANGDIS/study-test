@@ -20,7 +20,13 @@
     <p v-text="msg3"></p>
     <p v-pre>{{msg4}}</p>
     <p v-once>{{msg}}</p>
-    <input type="button" value="点击" @click="reverseMsg">
+    <!-- 假如事件不传参直接使用函数名，默认会传事件对象作为第一个参数 -->
+    <input type="button" value="点击" @click="reverseMsg"><br>
+    <!-- @事件名称是v-on的缩写
+      假如需要传参，自己的参数放到前面，最后一个$event作为事件对象
+     -->
+    <div>{{num}}</div>
+    <input type="button" value="点击" @click="add(1,2, $event)">
     <div>
       <input type="text" name="" id="" v-model="name">
       <input type="text" name="" id="" :value="name">
@@ -35,12 +41,19 @@
           msg2: '<span>hell vue ！</span>',
           msg3: '<span>hell vue ！</span>',
           msg4: '<span>hell vue ！</span>',
-          name: '123'
+          name: '123',
+          num: 0
         }
       },
       methods: {
-        reverseMsg: function () {
+        reverseMsg: function (event) {
+          console.log(event);
+          // 
           this.msg = this.msg.split('').reverse().join('')
+        },
+        add: function (a, b, event) {
+          this.num = a + b;
+          console.log(event)
         }
       }
     })
