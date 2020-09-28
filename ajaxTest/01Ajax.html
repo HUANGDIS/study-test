@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1></h1>
+  <script>
+    // 1、创建ajax
+    var xhr = new XMLHttpRequest();
+    // 2、添加配置信息
+    xhr.open("get", "http:localhost:8080");
+    //3、发送请求
+    xhr.send();
+    //4、监听事件
+    xhr.onload() = function () {
+      console.log(xhr.responseText)
+      document.getElementsByTagName("h1")[0].innerHTML = xhr.responseText;
+      var res = JSON.parse(xhr.responseText);
+      document.getElementsByTagName('h1')[0] = res.age
+    }
+  </script>
+</body>
+
+</html>

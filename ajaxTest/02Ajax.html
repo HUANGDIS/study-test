@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" name="username" id="username"><br>
+  <input type="password" name="pwd" id="pwd"><br>
+  <input type="submit" value="提交" id="btn">
+  <script>
+    var btn = document.getElementById("btn")
+    var username = document.getElementById('username')
+    var pwd = document.getElementById('pwd')
+    btn.onclick = function () {
+      /*
+       *  // *get 请求
+      var xhr = new XMLHttpRequest();
+      var params = 'username=' + username.value + '&pwd=' + pwd.value;
+      xhr.open('post', 'http:localhost:8080/get?' + params);
+      xhr.send();
+      xhr.onload() = function () {
+        console.log(xhr.responseText)
+      }
+      */
+
+      // post请求
+      var params = 'username=' + username.value + '&pwd=' + pwd.value;
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', 'http:localhost:8080/post');
+      // 设置请求参数格式类型
+      // xhr.setRequestHeader('Contenet-Type', 'application/x-www-from-urlencoded')
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.send(JSON.stringify({
+        'username': username.value,
+        'pwd': pwd.value
+      }));
+      xhr.onload() = function () {
+        console.log(xhr.responseText);
+      }
+    }
+  </script>
+</body>
+
+</html>
