@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+    <p v-cloak>{{msg}}</p>
+    <p v-html="msg2"></p>
+    <p v-text="msg3"></p>
+    <p v-pre>{{msg4}}</p>
+    <p v-once>{{msg}}</p>
+    <input type="button" value="点击" @click="reverseMsg">
+    <div>
+      <input type="text" name="" id="" v-model="name">
+      <input type="text" name="" id="" :value="name">
+    </div>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          msg: 'hell vue ！',
+          msg2: '<span>hell vue ！</span>',
+          msg3: '<span>hell vue ！</span>',
+          msg4: '<span>hell vue ！</span>',
+          name: '123'
+        }
+      },
+      methods: {
+        reverseMsg: function () {
+          this.msg = this.msg.split('').reverse().join('')
+        }
+      }
+    })
+    // v-html 把数据填充到标签，谨慎使用
+    // v-text 把数据填充到标签，不支持标签
+    // v-pre 适合加载静态内容
+    // v-once 内容将不会发生改变
+    // v-model 双向数据绑定
+    // v-bind 单向数据绑定 数据变视图变
+  </script>
+</body>
+
+</html>
