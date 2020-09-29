@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .grid {
+    width: 530px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .grid .header .book {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: burlywood;
+  }
+
+  .grid .sum {
+    height: 30px;
+    line-height: 30px;
+    background-color: burlywood;
+    border-top: 1px solid #C2D89A;
+  }
+
+  table {
+    width: 530px;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  table thead {
+    background-color: burlywood;
+    border-top: 1px solid #C2D89A;
+    text-align: center;
+  }
+
+  table td,
+  table th {
+    height: 35px;
+    line-height: 35px;
+  }
+
+  table tbody tr {
+    border-color: inherit;
+    text-align: center;
+  }
+
+  table tbody tr td {
+    border: 1px dashed goldenrod;
+  }
+</style>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <div id="app">
+    <div class="grid">
+      <div class="header">
+        <h1>图书管理</h1>
+        <div class="book">
+          <span>编号:</span>
+          <input type="text" name="" id="bookId" v-model="bookId" :disabled='isDisable' v-focus>
+          <span>名称:</span>
+          <input type="text" name="" id="" v-model="bookName">
+          <input type="button" value="提交" @click="add" :disable="addFlag">
+        </div>
+      </div>
+      <div class="sum">
+        <span>图书总数:{{total}}</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in bookList" :key="item.id">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.time}}</td>
+            <td>
+              <a href="#" @click="modify(index)">修改</a>
+              <span>|</span>
+              <a href="#" @click="del(index)">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    Vue.directive('focus', {
+      inserted: function (el) {
+        el.focus()
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          bookId: '',
+          bookName: '',
+          isDisable: false,
+          addFlag: false,
+          bookList: []
+        }
+      },
+      methods: {
+        add: function () {
+          if (this.isDisable) {
+            this.bookList.some((item, index) => {
+              if (this.bookId === item.id) {
+                item.name = this.bookName
+                // 需要终止循环
+                return true
+              }
+            })
+            this.isDisable = false
+          } else {
+            let book = {};
+            book.id = this.bookId;
+            book.name = this.bookName;
+            let date = new Date();
+            book.time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+            this.bookList.push(book);
+          }
+          this.bookId = '';
+          this.bookName = ''
+        },
+        modify: function (val) {
+          this.bookId = this.bookList[val].id;
+          this.bookName = this.bookList[val].name;
+          this.isDisable = true;
+        },
+        del: function (val) {
+          this.bookList.splice(val, 1)
+        }
+      },
+      computed: {
+        total: function () {
+          return this.bookList.length;
+        }
+      },
+      watch: {
+        bookName: function (val) {
+          this.addFlag = this.bookList.some(function (item) {
+            // if (item.name === this.bookName) {
+            //   return true
+            // }
+            // return false
+            // 优化写法
+            return item.name === val
+          })
+        }
+      },
+      mounted: function () {
+        var data = [
+          {
+            'id': 1,
+            'name': '三国演义',
+            'time': '2050-01-12 22:17:35'
+          },
+          {
+            'id': 2,
+            'name': '水浒传',
+            'time': '2050-01-12 22:18:35'
+          },
+          {
+            'id': 3,
+            'name': '红楼梦',
+            'time': '2050-01-12 22:19:35'
+          }
+        ]
+        this.bookList = data;
+      }
+    })
+  </script>
+</body>
+
+</html>
