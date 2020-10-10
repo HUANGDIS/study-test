@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <div id="app">
+    <router-link to="/user"> user</router-link>
+    <router-link to="/register"> register</router-link>
+    <router-view></router-view>
+  </div>
+  <script>
+    const user = {
+      template: '<h1>user组件</h1>'
+    }
+    const register = {
+      template: `<div>
+      <h1>register组件</h1>
+      <hr>
+      <router-link to="/register/Tab1"> Tab1</router-link>
+      <router-link to="/register/Tab2">Tab2</router-link>
+      <router-view></router-view>
+      </div>
+      `
+    }
+    const Tab1 = {
+      template: "<h2>Tab1子路由</h2>"
+    }
+    const Tab2 = {
+      template: "<h2>Tab2子路由</h2>"
+    }
+    const router = new VueRouter({
+      routes: [
+        {
+          path: '/', redirect: '/user'
+        },
+        {
+          path: '/user', component: user
+        },
+        {
+          path: '/register', component: register, children: [
+            { path: '/register/Tab1', component: Tab1 },
+            { path: '/register/Tab2', component: Tab2 }
+          ]
+        },
+      ]
+    })
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {}
+      },
+      router
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<style>
+  #app {
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  #app header {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(87, 106, 107);
+  }
+
+  #app footer {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(138, 138, 122);
+  }
+
+  #app .main {
+    overflow: hidden;
+  }
+
+  #app .main .tab {
+    width: 150px;
+    height: 300px;
+    float: left;
+    background-color: rgb(87, 106, 107);
+  }
+
+  .tab ul {
+    list-style: none;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    background-color: rgb(175, 171, 166);
+  }
+
+  .tab ul li {
+    height: 30px;
+    line-height: 30px;
+    list-style: 30px;
+    border-bottom: 0.5px solid #fff;
+  }
+
+  .tab a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .content {
+    width: 650px;
+    height: 300px;
+    float: left;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid #eee;
+    line-height: 35px;
+    font-size: 12px;
+  }
+
+  th {
+    background-color: #ddd;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <header>后台管理系统</header>
+    <div class="main">
+      <div class="tab">
+        <ul>
+          <li>
+            <!-- 用户管理 -->
+            <router-link to="/user">用户管理</router-link>
+          </li>
+          <li>
+            <router-link to="/rights">权限管理</router-link>
+          </li>
+          <li>
+            <router-link to="/goods">商品管理</router-link>
+          </li>
+          <li>
+            <router-link to="/orders">订单管理</router-link>
+          </li>
+          <li>
+            <router-link to="/system">系统管理</router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <router-view></router-view>
+      </div>
+    </div>
+    <footer>版权信息</footer>
+  </div>
+
+  <script>
+    const user = {
+      data() {
+        return {
+          list: [
+            { id: 1, name: '张三', age: 10 },
+            { id: 2, name: '李四', age: 20 },
+            { id: 3, name: '王五', age: 30 },
+          ]
+        }
+      },
+      methods: {
+        goDetails: function (id) {
+          this.$router.push('/handle' + id)
+        }
+      },
+      template: `
+      <div>
+      <h2>用户管理区域</h2>
+      <table >
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr v-for="(item, index) in list" :key="item.id">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.age}}</td>
+      <td>
+        <a herf="javascript:;" @click="goDetails(item.id)">操作</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+      </div>
+      `
+    }
+    const rights = {
+      template: "<h1>权限管理</h1>"
+    }
+    const goods = {
+      template: "<h1>商品管理</h1>"
+    }
+    const orders = {
+      template: "<h1>订单管理</h1>"
+    }
+    const system = {
+      template: "<h1>系统管理</h1>"
+    }
+    const handle = {
+      props: ['id'],
+      template: `
+      <div>
+        <h1>用户详情页----{{id}}</h1>
+      </div>
+      `
+    }
+    const router = new VueRouter({
+      routes: [
+        { path: '/', redirect: '/user' },
+        { path: '/user', component: user },
+        { path: '/handle/:id', component: user, props: true },
+        { path: '/rights', component: rights },
+        { path: '/goods', component: goods },
+        { path: '/orders', component: orders },
+        { path: '/system', component: system },
+
+      ]
+    })
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+
+        }
+      },
+      router
+    })
+  </script>
+</body>
+
+</html>
