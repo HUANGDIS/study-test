@@ -1,0 +1,14 @@
+li {
+  list-style: none;
+}
+
+::placeholder {
+  color: red;
+}
+
+.app {
+  width: 580px;
+  height: 480px;
+  background-color: pink;
+  background: url("../img/1.jpg");
+}

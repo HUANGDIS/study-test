@@ -1,0 +1,29 @@
+{
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.11.5"
+  },
+  "name": "study-test",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HUANGDIS/study-test.git"
+  },
+  "author": "huangpp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HUANGDIS/study-test/issues"
+  },
+  "homepage": "https://github.com/HUANGDIS/study-test#readme"
+}
