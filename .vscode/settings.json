@@ -1,5 +1,91 @@
 {
-  "eslint.codeAction.disableRuleComment": {
-    "enable": false
-  }
+  // 是否显示小地图
+  "editor.minimap.enabled": true,
+  // 重命名或移动文件时，启用或禁用自动更新导入路径
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // 工作区缩放级别
+  "window.zoomLevel": 1,
+  // 文件自动保存，焦点改变时
+  "files.autoSave": "onFocusChange",
+  // 每次保存的时候将代码按eslint格式进行修复
+  "eslint.codeActionsOnSave": true,
+  // 让prettier使用eslint的代码格式进行校验
+  "prettier.eslintIntegration": true,
+  // prettier 设置语句末尾不加分号
+  "prettier.semi": false,
+  // prettier 设置强制单引号
+  "prettier.singleQuote": true,
+  // 让函数(名)和后面的括号之间加个空格
+  // "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  // vetur 的自定义设置
+  "vetur.format.defaultFormatterOptions": {
+    // "wrap_attributes": "force-expand-multiline",
+    "singleQuote": false,
+    "wrap_attributes": "force-expand-multiline",
+    // "wrap_attributes": "auto",
+    "js-beautify-html": {
+      "singleQuote": false,
+      "single_quote": false,
+      "wrap_attributes": "force-expand-multiline"
+    },
+    "prettier": {
+      "singleQuote": true,
+      "semi": false,
+      "printWidth": 100,
+      // "wrapAttributes": "force-expand-multiline",
+      "wrapAttributes": "auto",
+      "sortAttributes": false
+    }
+  },
+  //开启对.vue文件中错误的检查 
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "beautify.config": {
+    "brace_style": "collapse,preserve-inline"
+  },
+  // vscode默认启用了根据文件类型自动设置tabsize的选项, 禁用
+  "editor.detectIndentation": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.fontSize": 14,
+  // 这个属性是表示在出现推荐值时,按下Tab键是否自动填入最佳推荐值
+  "editor.tabCompletion": "onlySnippets",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  // 编辑器的文件主题
+  "workbench.iconTheme": "vscode-icons",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  // 保存文件时进行eslint修复,并不能修复所有问题，多数还是需要手动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  // 设置控制编辑器中可以由屏幕阅读器一次读取的行数
+  // "editor.accessibilityPageSize": 14,
+  // 代码缩进量为两个空格
+  "editor.tabSize": 2,
+  // 每次保存的时候自动格式化 
+  "editor.formatOnSave": true,
+  // 每次保存的时候将代码按eslint格式进行修复
+  // "eslint.autoFixOnSave": true,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "eslint.codeAction.disableRuleComment": {}
 }
