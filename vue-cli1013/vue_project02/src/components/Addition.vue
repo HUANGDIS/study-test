@@ -1,17 +1,21 @@
 <template>
   <div>
-    <h3>当前数目为: {{count }} </h3>
-    <button @click="handle3">+1</button>
+    <!-- <h3>当前数目为: {{count }} </h3> -->
+    <h3>当前数目为: {{showNum }} </h3>
+    <!-- <h3>{{$store.getters.showNum}} </h3> -->
+    <button @click="handle1">+1</button>
   </div>
 </template>
 <script>
 import {mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {}
   },
   computed: {
-    ...mapState(['count'])
+    ...mapState(['count']),
+    ...mapGetters(['showNum'])
   },
   methods: {
     handle1: function () {
