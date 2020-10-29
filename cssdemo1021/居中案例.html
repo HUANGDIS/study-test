@@ -5,23 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    body{
+      height: 100%;
+    }
     .app{
       width: 500px;
       height: 500px;
       background-color: aqua;
-      position: absolute;
+      position: relative;
       display: block;
     }
     .main{
-      position: relative;
+      position: absolute;
       top: 50%;
       left: 50%;
       width: 100px;
       height: 100px;
       background-color: blue;
-      transform: translate(-50%, -50%);
-      /* margin: 0 auto; */
-      
+      transform: translate(-50%, -50%);      
+    }
+    .max{
+      width: 150px;
+      height: 150px;
+      background-color: pink;
+    }
+    .max:hover{
+      transform: scale(2);
     }
   </style>
 </head>
@@ -29,6 +38,6 @@
   <div class="app">
     <p class="main"></p>
   </div>
-
+  <div class="max"></div>
 </body>
 </html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      overflow: hidden;
+    }
+    .img{
+      overflow: hidden;
+      float: left;
+      margin-left: 50px;
+      border-radius: 50%;
+      border: 1px solid saddlebrown;
+    }
+    div img{
+      width: 150px;
+      height: 150px;
+      transition: all 0.1s;
+    }
+    div img:hover{
+      transform: scale(1.1);
+    }
+    span{
+      width: 30px;
+      height: 30px;
+      border: 1px solid pink;
+      display: inline-block;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      transition: all 0.2s;
+      margin-left: 20px;
+    }
+    span:hover{
+      transform: scale(1.1);
+    }
+    .move{
+      width: 150px;
+      height: 150px;
+      background-color: pink;
+      animation: move;
+      animation-duration: 2s;
+    }
+    @keyframes move {
+      0%{
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(1000px);
+      }
+    }
+    .box1{
+      width: 200px;
+      height: 200px;
+      
+    }
+    .box2{
+       height: 100%; 
+      }
+      .box3{
+        height: 100%;
+      }
+    .box4{
+      height: 100%;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="img"><img src="./img/pic.jpg" alt=""></div>
+    <div class="img"><img src="./img/pic.jpg" alt=""></div>
+    <div class="img"><img src="./img/pic.jpg" alt=""></div>
+  </div>
+  <div class="num"> 
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+    <span>7</span>
+  </div>
+  <div class="move"></div>
+
+  <div class="box1">
+    <div class="box2">
+      <div class="box3">
+        <div class="box4"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
