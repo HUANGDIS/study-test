@@ -1,132 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .box{
-      overflow: hidden;
-    }
-    .img{
-      overflow: hidden;
-      float: left;
-      margin-left: 50px;
-      border-radius: 50%;
-      border: 1px solid saddlebrown;
-    }
-    div img{
-      width: 150px;
-      height: 150px;
-      transition: all 0.1s;
-    }
-    div img:hover{
-      transform: scale(1.1);
-    }
-    span{
-      width: 30px;
-      height: 30px;
-      border: 1px solid pink;
-      display: inline-block;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 30px;
-      transition: all 0.2s;
-      margin-left: 20px;
-    }
-    span:hover{
-      transform: scale(1.1);
-    }
-    .move{
-      width: 150px;
-      height: 150px;
-      background-color: pink;
-      animation: move;
-      animation-duration: 2s;
-    }
-    @keyframes move {
-      0%{
-        transform: translateX(0px);
-      }
-      100% {
-        transform: translateX(1000px);
-      }
-    }
-    .box1{
-      width: 200px;
-      height: 200px;
-      
-    }
-    .box2{
-       height: 100%; 
-      }
-      .box3{
-        height: 100%;
-      }
-    .box4{
-      height: 100%;
-      background-color: aqua;
-    }
-    .test{
-      width: 500px;
-      height: 500px;
-      overflow: hidden;
-      border: 1px solid #000;
-    }
-    .left{
-      width: 100px;
-      height: 100px;
-      float: left;
-      background-color: aqua;
-    }
-    .right{
-      width: 100px;
-      height: 100px;
-      float: left;
-      background-color: #678;
-    }
-  </style>
-</head>
-<body>
-  <div class="box">
-    <div class="img"><img src="./img/pic.jpg" alt=""></div>
-    <div class="img"><img src="./img/pic.jpg" alt=""></div>
-    <div class="img"><img src="./img/pic.jpg" alt=""></div>
-  </div>
-  <div class="num"> 
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-    <span>5</span>
-    <span>6</span>
-    <span>7</span>
-  </div>
-  <div class="move"></div>
-
-  <div class="box1">
-    <div class="box2">
-      <div class="box3">
-        <div class="box4"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="test">
-    <div class="left"><span>123</span></div>
-    <div class="right"><span>456</span></div>
-  </div>
-  <div id="myChart"></div>
-</body>
-<script>
-  // 数据接入机构统计
-let myDom = document.getElementById('myChart');
-let myWidth = myDom.offsetWidth - 5;            // 获取容器宽度
-let myHeight = myDom.offsetHeight - 5;          // 获取容器高度
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+let myWidth = dom.offsetWidth - 5;            // 获取容器宽度
+let myHeight = dom.offsetHeight - 5;          // 获取容器高度
 let myRadius = myHeight * 0.44 / 2;             // 根据环形图内圈百分比获取内圆半径
-let myPX = (0.3 - (myRadius / myWidth)) * 100 + '%';         // 获取白色填充圆在容器中的x轴位置百分比，以便与环形图贴合
-let myChart = echarts.init(document.getElementById('myChart'));
-let option = {
+let myPX = (0.3 - (myRadius / myWidth)) * 100 + '%'; 
+option = null;
+option = {
     title: {                        // 标题样式
         text: '数据接入机构统计',
         textStyle: {
@@ -212,6 +108,9 @@ let option = {
         }
     ]
 };
-myChart.setOption(option);
-</script>
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
 </html>
