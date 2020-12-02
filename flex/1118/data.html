@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    msg = function(){
+      let Mock = require('mock.js')
+      let Random = Mock.Random;
+      module.exports = function () {
+        var data = {
+          staMsg: []
+        }
+      }
+      for (var i = 0; i < 10; i++) {
+        var content = Random.cparagraph(0, 10)
+        data.staMsg.push({
+          id: i,
+          staff: Random.integer(10, 100)
+        })
+      }
+      return data
+    }
+console.log(msg());
+  </script>
+</body>
+</html>
+

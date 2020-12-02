@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .app{
+      width: 100%;
+      display: flex;
+      /* flex-flow: row nowrap; */
+      justify-content: center;
+      align-items: center;
+    }
+    .flex{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(39, 143, 39);
+      border-radius: 4%;
+      margin: 20px;
+      padding: 10px;
+    }
+    .flex .point{
+      width: 18px;
+      height: 18px;
+      border-radius: 18px;
+      background-color: black;
+    }
+    .flex:nth-child(1){
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flex:nth-child(2){
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex:nth-child(2) .point:nth-child(2){
+      align-self: flex-end;
+      justify-content: space-between;
+    }
+    .flex:nth-child(3){
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex:nth-child(3) .point:nth-child(2){
+      align-self: center;
+      /* justify-content: center; */
+    }
+    .flex:nth-child(3) .point:nth-child(3){
+      align-self: flex-end;
+    }
+    .flex:nth-child(4){
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex:nth-child(4) .point-box:nth-child(2),
+    .flex:nth-child(4) .point-box:nth-child(1){
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+    }
+    .flex:nth-child(5){
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex:nth-child(5) .point-box:nth-child(3),
+    .flex:nth-child(5) .point-box:nth-child(1){
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+    }
+    .flex:nth-child(5) .point-box:nth-child(2){
+      display: flex;
+      align-items: center;
+    }
+    .flex:nth-child(6){
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex:nth-child(6) .point-box{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="flex">
+      <div class="point"></div>
+    </div>
+    <div class="flex">
+      <div class="point"></div>
+      <div class="point"></div>
+    </div>
+    <div class="flex">
+      <div class="point"></div>
+      <div class="point"></div>
+      <div class="point"></div>
+    </div>
+    <div class="flex">
+      <div class="point-box">
+        <div class="point"></div>
+        <div class="point"></div>
+      </div>
+      <div class="point-box">
+        <div class="point"></div>
+        <div class="point"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="point-box">
+        <div class="point"></div>
+        <div class="point"></div>
+      </div>
+      <div class="point-box">
+        <div class="point"></div>
+      </div>     
+      <div class="point-box">
+        <div class="point"></div>
+        <div class="point"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="point-box">
+        <div class="point"></div>
+        <div class="point"></div>
+        <div class="point"></div>
+      </div>
+          
+      <div class="point-box">
+        <div class="point"></div>
+        <div class="point"></div>
+        <div class="point"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
